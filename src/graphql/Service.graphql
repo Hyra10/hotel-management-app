@@ -1,0 +1,43 @@
+
+fragment ServiceFragment on Service {
+  serviceId
+  name
+  observation
+}
+
+query getAllServicesDd($hotelId: Int!) {
+  getAllServices(hotelId: $hotelId) {
+    id: serviceId
+    name
+  }
+}
+
+query getAllServices($hotelId: Int!) {
+  getAllServices(hotelId: $hotelId) {
+    ...ServiceFragment
+  }
+}
+
+query	getServiceById($serviceId: Int!) {
+  getServiceById(serviceId: $serviceId) {
+    ...ServiceFragment
+  }
+}
+
+mutation addService($data: ServiceInput!) {
+  addService(data: $data) {
+    ...ServiceFragment
+  }
+}
+
+mutation updateService($data: ServiceInput!) {
+  updateService(data: $data) {
+    ...ServiceFragment
+  }
+}
+
+mutation deleteService($serviceId: Int!) {
+  deleteService(serviceId: $serviceId) {
+    ...ServiceFragment
+  }
+}

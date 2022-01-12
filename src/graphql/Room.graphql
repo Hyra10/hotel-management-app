@@ -1,0 +1,88 @@
+
+fragment RoomFragment on Room {
+    roomId,
+    roomNumber,
+    floorNumber,
+    buildingNumber,
+    price,
+    allowHandicap,
+    roomType {
+      name
+    }
+    roomBeds {
+      bed {
+        bedId,
+      },
+    },
+}
+
+query getAllRooms($hotelId: Int!) {
+  getAllRooms(hotelId: $hotelId) {
+    ...RoomFragment
+  }
+}
+
+query getAllRoomsReservation($hotelId: Int!) {
+  getAllRooms(hotelId: $hotelId) {
+    roomId,
+    roomNumber
+    roomStatus {
+      abbr
+    }
+  }
+}
+
+query	getRoomById($roomId: Float!) {
+  getRoomById(roomId: $roomId) {
+    roomId,
+    roomNumber,
+    floorNumber,
+    buildingNumber,
+    price,
+    allowHandicap,
+    observation,
+    roomType {
+      roomTypeId
+    }
+    roomView {
+      roomViewId
+    }
+    roomStatus {
+      roomStatusId
+    }
+    roomBeds {
+      bed {
+        bedId,
+      },
+    },
+  }
+}
+
+mutation addRoom($data: RoomInput!) {
+  addRoom(data: $data) {
+    roomId,
+    roomNumber,
+    floorNumber,
+    buildingNumber,
+    price,
+    allowHandicap,
+  }
+}
+
+mutation updateRoom($data: RoomInput!) {
+  updateRoom(data: $data) {
+    roomId,
+    roomNumber,
+    floorNumber,
+    buildingNumber,
+    price,
+    allowHandicap,
+  }
+}
+
+mutation deleteRoom($roomId: Int!) {
+  deleteRoom(roomId: $roomId) {
+    ...RoomFragment
+  }
+}
+

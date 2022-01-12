@@ -1,0 +1,42 @@
+fragment RoomTypesFragment on RoomType {
+  roomTypeId
+  name
+  abbr
+  description
+}
+
+
+query getAllRoomTypesDd {
+  getAllRoomTypes {
+    id: roomTypeId
+    name
+  }
+}
+
+query getAllRoomTypes {
+  getAllRoomTypes {
+  ...RoomTypesFragment
+  }
+}
+
+mutation updateRoomType($data: RoomTypeInput!) {
+  updateRoomType(data: $data) {
+    ...RoomTypesFragment
+  }
+}
+
+query	getRoomTypeById($roomTypeId: Int!) {
+  getRoomTypeById(roomTypeId: $roomTypeId) {
+    ...RoomTypesFragment
+  }
+}
+
+mutation addRoomType($data: RoomTypeInput!) {
+  addRoomType(data: $data) {
+    ...RoomTypesFragment
+  }
+}
+
+mutation deleteRoomType($roomTypeId: Int!) {
+  deleteRoomType(roomTypeId: $roomTypeId)
+}

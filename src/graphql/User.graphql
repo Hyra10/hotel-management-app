@@ -1,0 +1,58 @@
+fragment UserFragment on User {
+  userId
+  userName
+  email
+  needsNewPassword
+}
+
+query getAllUsers {
+  getAllUsers {
+    ...UserFragment
+  }
+}
+
+query getAllProfesors {
+  getAllProfesors {
+    id: userId
+    userName
+  }
+}
+
+query getAllUsersDd {
+  getAllUsers {
+    id: userId
+    userName
+  }
+}
+
+mutation updateUser($data: UserInput!) {
+  updateUser(data: $data) {
+    ...UserFragment
+  }
+}
+
+query	getUserById($userId: Int!) {
+  getUserById(userId: $userId) {
+    ...UserFragment
+  }
+}
+
+mutation addUser($data: UserInput!) {
+  addUser(data: $data) {
+    ...UserFragment
+  }
+}
+
+mutation deleteUser($userId: Int!) {
+  deleteUser(userId: $userId) {
+    ...UserFragment
+  }
+}
+
+mutation resetPassword($userId: Int!) {
+  resetPassword(userId: $userId)
+}
+
+mutation changePassword($password: String!) {
+  changePassword(password: $password)
+}

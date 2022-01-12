@@ -1,0 +1,75 @@
+
+fragment ReservationFragment on Reservation {
+  subtotal
+  tax
+  total
+  client {
+    clientId
+  }
+  reservationRooms {
+    reservationRoomId
+    checkInDate
+    checkOutDate
+  }
+  reservationItems {
+    reservationItemId
+    name
+    price
+  }
+  reservationStatus {
+    reservationStatusId
+  }
+}
+
+query getAllReservation {
+  getAllReservation {
+    ...ReservationFragment
+  }
+}
+
+query	getReservationById($reservationId: Int!) {
+  getReservationById(reservationId: $reservationId) {
+      subtotal
+      tax
+      total
+      client {
+        clientId
+        cedula
+        name
+        firstSurname
+        secondSurname
+      }
+      reservationRooms {
+        reservationRoomId
+        checkInDate
+        checkOutDate
+        room {
+          roomNumber
+          roomType {
+            name
+          }
+        }
+      }
+      reservationItems {
+        reservationItemId
+        name
+        price
+      }
+      reservationStatus {
+        reservationStatusId
+      }
+  }
+}
+
+mutation addReservation($data: ReservationInput!) {
+  addReservation(data: $data) {
+    client {
+      clientId
+    }
+  }
+}
+
+mutation UpdateReservation($data: UpdateReservationInput!) {
+  UpdateReservation(data: $data)
+}
+

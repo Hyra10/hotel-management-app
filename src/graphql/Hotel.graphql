@@ -1,0 +1,33 @@
+fragment HotelFragment on Hotel {
+  hotelId
+  name
+  description
+}
+
+query getAllHotels  {
+  getAllHotels {
+    ...HotelFragment
+  }
+}
+
+mutation updateHotel($data: HotelInput!) {
+  updateHotel(data: $data) {
+    ...HotelFragment
+  }
+}
+
+query	getHotelById($hotelId: Int!) {
+  getHotelById(hotelId: $hotelId) {
+    ...HotelFragment
+  }
+}
+
+mutation addHotel($data: HotelInput!) {
+  addHotel(data: $data) {
+    ...HotelFragment
+  }
+}
+
+mutation deleteHotel($hotelId: Int!) {
+  deleteHotel(hotelId: $hotelId)
+}

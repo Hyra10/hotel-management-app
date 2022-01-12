@@ -1,0 +1,19 @@
+query getAllReservationRooms(
+  $startDate: DateTime!, $endDate: DateTime!, $hotelId: Int!
+) {
+  getAllReservationRooms(
+    startDate: $startDate, endDate: $endDate, hotelId: $hotelId
+  ) {
+    checkInDate
+    checkOutDate
+    reservation {
+      reservationId
+      reservationStatus {
+        abbr
+      }
+    }
+    room {
+      roomId
+    }
+  }
+}

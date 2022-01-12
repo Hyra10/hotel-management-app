@@ -1,0 +1,22 @@
+
+fragment ReportFragment on Report {
+  reportId
+  message
+  createdAt
+  user {
+    userId
+    userName
+  }
+}
+
+query GetAllReports($profesorId: Int!) {
+  GetAllReports(profesorId: $profesorId) {
+    ...ReportFragment
+  }
+}
+
+query GetAllReportsByStudentId($studentId: Int!) {
+  GetAllReportsByStudentId(studentId: $studentId) {
+    ...ReportFragment
+  }
+}

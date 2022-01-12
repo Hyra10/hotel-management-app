@@ -1,0 +1,68 @@
+
+fragment ClientFrag on Client {
+  clientId
+  name
+  firstSurname
+  secondSurname
+  cedula
+  age
+  phoneNumber
+  nationality
+  observation
+  disability
+  alergic
+  isLactoseIntolerant
+  creditCardNumber
+  cvc
+  expiredDate
+  cardName
+}
+
+query getAllClients($hotelId: Int!) {
+  getAllClients(hotelId: $hotelId) {
+    clientId
+    name
+    firstSurname
+    secondSurname
+    cedula
+    phoneNumber
+  }
+}
+
+query	getAllClientsBySearchCriteria(
+  $criteria: String!,
+  $hotelId: Int!
+) {
+  getAllClientsBySearchCriteria(
+    criteria: $criteria,
+    hotelId: $hotelId
+  ) {
+    clientId
+    name
+    firstSurname
+    secondSurname
+    cedula
+  }
+}
+
+query	getClientById($clientId: Float!) {
+  getClientById(clientId: $clientId) {
+    ...ClientFrag
+  }
+}
+
+mutation addClient($data: ClientInput!) {
+  addClient(data: $data) {
+    ...ClientFrag
+  }
+}
+
+mutation updateClient($data: ClientInput!) {
+  updateClient(data: $data) {
+    ...ClientFrag
+  }
+}
+
+mutation deleteClient($clientId: Int!) {
+  deleteClient(clientId: $clientId)
+}

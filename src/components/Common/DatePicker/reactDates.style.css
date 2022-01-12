@@ -1,0 +1,47 @@
+/* 
+p0: '#002f72',
+p1: '#0747A6',
+p2: '#0065FF',
+p3: '#4C9AFF',
+p4: '#B3D4FF',
+p5: '#DEEBFF',
+p6: '#FFFFFF',
+
+white: '#FFFFFF',
+black: '#000000',
+grey: '#8F8F8F',
+lightGrey: '#CCCCCC',
+lighterGrey: '#F6F6F6',
+warningRed: '#BB0000',
+*/
+
+
+.CalendarDay__selected_span {
+  background: #0747A6;
+  color: #fff;
+  border: 1px solid #002f72;
+}
+
+.CalendarDay__selected {
+  background: #0747A6;
+  color: #fff;
+  border: 1px solid #4C9AFF;
+}
+
+.CalendarDay__selected:hover {
+  background: #0747A6;
+  color: #fff;
+}
+
+.CalendarDay__hovered_span:hover,
+.CalendarDay__hovered_span {
+  background: #0065FF;
+  color: #fff
+}
+
+.CalendarDay__selected_span:active,
+.CalendarDay__selected_span:hover {
+  background: #0065FF;
+  border: 1px double #0065FF;
+  color: #fff;
+}

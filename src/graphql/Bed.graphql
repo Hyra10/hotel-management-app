@@ -1,0 +1,44 @@
+fragment BedsFragment on Bed {
+  bedId
+  name
+  abbr
+  description
+}
+
+
+query getAllBedsDd {
+  getAllBeds {
+    id: bedId
+    name
+  }
+}
+
+query getAllBeds {
+  getAllBeds {
+    ...BedsFragment
+  }
+}
+
+mutation updateBed($data: BedInput!) {
+  updateBed(data: $data) {
+    ...BedsFragment
+  }
+}
+
+query	getBedById($bedId: Int!) {
+  getBedById(bedId: $bedId) {
+    ...BedsFragment
+  }
+}
+
+mutation addBed($data: BedInput!) {
+  addBed(data: $data) {
+    ...BedsFragment
+  }
+}
+
+mutation deleteBed($bedId: Int!) {
+  deleteBed(bedId: $bedId) {
+    ...BedsFragment
+  }
+}

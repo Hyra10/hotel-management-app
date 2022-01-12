@@ -1,0 +1,44 @@
+fragment ServiceStatusFragment on ServiceStatus {
+  serviceStatusId
+  name
+  abbr
+  description
+}
+
+query getAllServiceStatuses {
+  getAllServiceStatuses {
+    ...ServiceStatusFragment
+  }
+}
+
+
+query getAllServiceStatusesDd {
+  getAllServiceStatuses {
+    id: serviceStatusId
+    name
+  }
+}
+
+mutation updateServiceStatus($data: ServiceStatusInput!) {
+  updateServiceStatus(data: $data) {
+    ...ServiceStatusFragment
+  }
+}
+
+query	getServiceStatusById($serviceStatusId: Int!) {
+  getServiceStatusById(serviceStatusId: $serviceStatusId) {
+    ...ServiceStatusFragment
+  }
+}
+
+mutation addServiceStatus($data: ServiceStatusInput!) {
+  addServiceStatus(data: $data) {
+    ...ServiceStatusFragment
+  }
+}
+
+mutation deleteServiceStatus($serviceStatusId: Int!) {
+  deleteServiceStatus(serviceStatusId: $serviceStatusId) {
+    ...ServiceStatusFragment
+  }
+}

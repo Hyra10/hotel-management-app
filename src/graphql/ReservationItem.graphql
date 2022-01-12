@@ -1,0 +1,31 @@
+
+fragment ReservationItemFragment on ReservationItem {
+  reservationItemId
+  name
+  price
+  createdAt
+}
+
+query getAllReservationItems($reservationId: Int!) {
+  getAllReservationItems(reservationId: $reservationId) {
+    ...ReservationItemFragment
+  }
+}
+
+query	getReservationItemById($reservationItemId: Int!) {
+  getReservationItemById(reservationItemId: $reservationItemId) {
+    ...ReservationItemFragment
+  }
+}
+
+mutation addReservationItem($data: ReservationItemInput!) {
+  addReservationItem(data: $data) {
+    reservationItemId
+  }
+}
+
+mutation updateReservationItem($data: ReservationItemInput!) {
+  updateReservationItem(data: $data) {
+    reservationItemId
+  }
+}

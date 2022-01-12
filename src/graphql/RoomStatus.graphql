@@ -1,0 +1,45 @@
+fragment RoomStatusFragment on RoomStatus {
+  roomStatusId
+  name
+  abbr
+  description
+  color
+}
+
+
+query getAllRoomStatusesDd {
+  getAllRoomStatuses {
+    id: roomStatusId
+    name
+  }
+}
+
+query getAllRoomStatuses {
+  getAllRoomStatuses {
+  ...RoomStatusFragment
+  }
+}
+
+mutation updateRoomStatus($data: RoomStatusInput!) {
+  updateRoomStatus(data: $data) {
+    ...RoomStatusFragment
+  }
+}
+
+query	getRoomStatusById($roomStatusId: Int!) {
+  getRoomStatusById(roomStatusId: $roomStatusId) {
+    ...RoomStatusFragment
+  }
+}
+
+mutation addRoomStatus($data: RoomStatusInput!) {
+  addRoomStatus(data: $data) {
+    ...RoomStatusFragment
+  }
+}
+
+mutation deleteRoomStatus($roomStatusId: Int!) {
+  deleteRoomStatus(roomStatusId: $roomStatusId) {
+    ...RoomStatusFragment
+  }
+}

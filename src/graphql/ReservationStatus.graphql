@@ -1,0 +1,44 @@
+fragment ReservationStatusFragment on ReservationStatus {
+  reservationStatusId
+  name
+  abbr
+  description
+}
+
+query getAllReservationStatuses {
+  getAllReservationStatuses {
+    ...ReservationStatusFragment
+  }
+}
+
+
+query getAllReservationStatusesDd {
+  getAllReservationStatuses {
+    id: reservationStatusId
+    name
+  }
+}
+
+mutation updateReservationStatus($data: ReservationStatusInput!) {
+  updateReservationStatus(data: $data) {
+    ...ReservationStatusFragment
+  }
+}
+
+query	getReservationStatusById($reservationStatusId: Int!) {
+  getReservationStatusById(reservationStatusId: $reservationStatusId) {
+    ...ReservationStatusFragment
+  }
+}
+
+mutation addReservationStatus($data: ReservationStatusInput!) {
+  addReservationStatus(data: $data) {
+    ...ReservationStatusFragment
+  }
+}
+
+mutation deleteReservationStatus($reservationStatusId: Int!) {
+  deleteReservationStatus(reservationStatusId: $reservationStatusId) {
+    ...ReservationStatusFragment
+  }
+}

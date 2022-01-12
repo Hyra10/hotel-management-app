@@ -1,0 +1,6 @@
+query getAllUserRolesDd {
+  getAllUserRoles {
+    id: userRoleId
+    name
+  }
+}

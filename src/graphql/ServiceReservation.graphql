@@ -1,0 +1,63 @@
+
+query getAllServiceReservation(
+  $startOfWeek: DateTime!, $endOfWeek: DateTime!, $hotelId: Int!
+) {
+  getAllServiceReservation(
+    startOfWeek: $startOfWeek, endOfWeek: $endOfWeek, hotelId: $hotelId
+  ) {
+    serviceReservationId
+    startDate
+    endDate
+    service {
+      name
+    }
+    serviceStatus {
+      abbr
+    }
+  }
+}
+
+query	getServiceReservationById($serviceReservationId: Int!) {
+  getServiceReservationById(serviceReservationId: $serviceReservationId) {
+    serviceReservationId
+    startDate
+    endDate
+    areThereChildren
+    clientNotes
+    serviceSubtype
+    staffNotes
+    service {
+      serviceId
+    }
+    serviceStatus {
+      serviceStatusId
+    }
+    clientServiceReservations {
+      client {
+        clientId
+        cedula
+        name
+        firstSurname
+        secondSurname
+      }
+    }
+  }
+}
+
+mutation addServiceReservation($data: ServiceReservationInput!) {
+  addServiceReservation(data: $data) {
+    serviceReservationId
+  }
+}
+
+mutation updateServiceReservation($data: ServiceReservationInput!) {
+  updateServiceReservation(data: $data) {
+    serviceReservationId
+  }
+}
+
+mutation deleteServiceReservation($serviceReservationId: Int!) {
+  deleteServiceReservation(serviceReservationId: $serviceReservationId) {
+    serviceReservationId
+  }
+}

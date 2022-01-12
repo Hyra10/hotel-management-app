@@ -1,0 +1,44 @@
+fragment RoomViewsFragment on RoomView {
+  roomViewId
+  name
+  abbr
+  description
+}
+
+
+query getAllRoomViewsDd {
+  getAllRoomView {
+    id: roomViewId
+    name
+  }
+}
+
+query getAllRoomView {
+  getAllRoomView {
+  ...RoomViewsFragment
+  }
+}
+
+mutation updateRoomView($data: RoomViewInput!) {
+  updateRoomView(data: $data) {
+    ...RoomViewsFragment
+  }
+}
+
+query	getRoomViewById($roomViewId: Int!) {
+  getRoomViewById(roomViewId: $roomViewId) {
+    ...RoomViewsFragment
+  }
+}
+
+mutation addRoomView($data: RoomViewInput!) {
+  addRoomView(data: $data) {
+    ...RoomViewsFragment
+  }
+}
+
+mutation deleteRoomView($roomViewId: Int!) {
+  deleteRoomView(roomViewId: $roomViewId) {
+    ...RoomViewsFragment
+  }
+}
